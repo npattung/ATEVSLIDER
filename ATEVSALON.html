@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>5 Image Slider</title>
+
+<style>
+body {
+  margin: 0;l
+  overflow: hidden;
+  background-image: url('2_20260418_133222_0002.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.container {
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.section {
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+  position: relative;
+}
+
+.track {
+  display: flex;
+  width: calc(20% * 10);
+  height: 100%;
+}
+
+.slide {
+  width: 20%;
+  height: 90%;
+  margin: 0 10px;
+  border-radius: 20px;
+  background-size: cover;
+  background-position: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+/* animations */
+.top .track {
+  animation: slideLeft 30s linear infinite;
+}
+
+.bottom .track {
+  animation: slideRight 10s linear infinite;
+}
+
+@keyframes slideLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes slideRight {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+/* music button */
+#musicBtn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 12px 18px;
+  border: none;
+  border-radius: 20px;
+  background: #ff69b4;
+  color: white;
+}
+</style>
+
+<script>
+function playMusic() {
+  const music = document.getElementById("bgMusic");
+  music.play();
+  document.getElementById("musicBtn").style.display = "none";
+}
+</script>
+
+</head>
+
+<body>
+
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
+  <source src="the_mountain-bright-513153.mp3" type="audio/mpeg">
+</audio>
+
+<button onclick="playMusic()" id="musicBtn">▶ Play</button>
+
+<div class="container">
+
+  <!-- TOP -->
+  <div class="section top">
+    <div class="track">
+      <div class="slide" style="background-image:url('IMG_2561.JPG')"></div>
+      <div class="slide" style="background-image:url('IMG_2550.JPG')"></div>
+      <div class="slide" style="background-image:url('IMG_2560.JPG')"></div>
+      <div class="slide" style="background-image:url('IMG_2559.JPG')"></div>
+      <div class="slide" style="background-image:url('IMG_2554.JPG')"></div>
+
+      <!-- duplicate -->
+      <div class="slide" style="background-image:url('IMG_2561.JPG')"></div>
+      <div class="slide" style="background-image:url('IMG_2550.JPG')"></div>
+      <div class="slide" style="background-image:url('IMG_2560.JPG')"></div>
+      <div class="slide" style="background-image:url('IMG_2559.JPG')"></div>
+      <div class="slide" style="background-image:url('IMG_2554.JPG')"></div>
+    </div>
+  </div>
+
+  <!-- BOTTOM -->
+  <div class="section bottom">
+    <div class="track">
+      <div class="slide" style="background-image:url('IMG_2563.JPG')"></div>
+      <div class="slide" style="background-image:url('IMG_2555.JPG')"></div>
+      <div class="slide" style="background-image:url('IMG_2548.JPG')"></div>
+      <div class="slide" style="background-image:url('IMG_2562.JPG')"></div>
+      <div class="slide" style="background-image:url('IMG_2553.JPG')"></div>
+
+      <!-- duplicate -->
+      <div class="slide" style="background-image:url('IMG_2563.JPG')"></div>
+      <div class="slide" style="background-image:url('IMG_2555.JPG')"></div>
+      <div class="slide" style="background-image:url('IMG_2548.JPG')"></div>
+      <div class="slide" style="background-image:url('IMG_2562.JPG')"></div>
+      <div class="slide" style="background-image:url('IMG_2553.JPG')"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+window.addEventListener("load", () => {
+  const music = document.getElementById("bgMusic");
+
+  // try autoplay
+  music.play().catch(() => {
+    console.log("Autoplay blocked");
+  });
+});
+</script>
+
+</body>
+</html>
