@@ -136,14 +136,23 @@ function playMusic() {
 </div>
 
 <script>
-window.addEventListener("load", () => {
-  const music = document.getElementById("bgMusic");
+const music = document.getElementById("bgMusic");
 
-  // try autoplay
-  music.play().catch(() => {
-    console.log("Autoplay blocked");
-  });
+// try autoplay with delay
+window.addEventListener("load", () => {
+  setTimeout(() => {
+    music.play().catch(() => {});
+  }, 1000);
 });
+
+// force play when user touches ANYWHERE
+function forcePlay() {
+  music.play();
+}
+
+// trigger on ANY interaction
+document.body.addEventListener("touchstart", forcePlay);
+document.body.addEventListener("click", forcePlay);
 </script>
 
 </body>
